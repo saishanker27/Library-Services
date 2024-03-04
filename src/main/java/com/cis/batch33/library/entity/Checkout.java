@@ -5,8 +5,8 @@ import lombok.Data;
 
 import java.util.Date;
 
-@Entity
 @Table(name="checkout")
+@Entity
 @Data
 public class Checkout {
     @Id
@@ -18,5 +18,4 @@ public class Checkout {
     private Date checkoutDate;
     private Date dueDate;
     private boolean isReturned;
-
 }

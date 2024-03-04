@@ -2,7 +2,6 @@ package com.cis.batch33.library.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Check;
 
 import java.util.List;
 
@@ -27,36 +26,21 @@ public class LibraryMember {
     @Column(name="phone_number")
     private Long phoneNumber;
 
-    @Column(name="memebership_level")
+    @Column(name="membership_level")
     private String memberShipLevel;
+
+    @Column(name = "address_id", insertable = false, updatable = false)
+    private Long addressId;
 
     @ManyToOne
     @JoinColumn(name="address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "libraryMember")
+    @OneToMany(mappedBy = "libraryMember", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Checkout> checkouts;
-
-
-
 
     // lombok
 
 
 
 }
-
-
-// xml for mapping , connection details
-// url , username, password and driver name
-
-// mapping, dependencies, connection properties
-// JPA REPOSITORIES
-// autowire and use it in service layer
-
-
-
-
-// query, execute
-// EntityManager, EntityManagerFactory -
-// execute, executeUpdate , list,

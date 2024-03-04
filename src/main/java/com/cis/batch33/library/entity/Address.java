@@ -5,8 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
-@Entity
 @Table(name="address")
+@Entity
 @Data
 public class Address {
     @Id
@@ -15,12 +15,7 @@ public class Address {
     private String line2;
     private String city;
     private String state;
-    private Integer zip;
-    @OneToMany(mappedBy = "address")
+    //private Integer zip;
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
     private List<LibraryMember> members;
 }
-// select * from Address a join library_Member l on a.id=l.address_id
-        // where a.address_id = ?
-
-
-// POJO ENTITY DTO VO BO
